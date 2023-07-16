@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+    <section class="vh-100" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+              <div class="card rounded-3">
+                <div class="card-body p-4">
+      
+                  <h4 class="text-center my-3 pb-3">Todo List</h4>
+      
+                  <form action="/add-todo" method="post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                    <div class="col-12">
+                      <div class="form-outline">
+                        <input placeholder="Insert your task" type="text" name="todo" class="form-control" />
+                      </div>
+                    </div>
+      
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Add to list</button>
+                    </div>
+                  </form>
+      
+                  <table class="table mb-4 table-hover text-center">
+                    <% if (todos.length != 0) {%>
+                      <thead>
+                        <tr>
+                          <th scope="col">Todo id</th>
+                          <th scope="col">Todo description</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(let todo of todos) {%>
+                          <tr>
+                            <td><%= todo.id %></td>
+                            <td><%= todo.text %></td>
+                            <td>
+                              <% if(todo.finished) {%>
+                                <span class="badge rounded-pill bg-success">Finished</span>
+                              <% } else {%>
+                                <span class="badge rounded-pill bg-secondary">Not finished</span>
+                              <% }%>
+                            </td>
+                            <td>
+                              <% if(todo.finished) {%>
+                                <form style="display: inline; margin-left: 2px;" action="/remove-todo/<%= todo.id %>" method="post">
+                                  <button type="submit" style="border: 0;" class="badge text-bg-danger">Remove</button>
+                                </form>
+                              <% } else {%>
+                                <form style="display: inline; margin-left: 2px;" action="/finishing-todo/<%= todo.id %>" method="post">
+                                  <button type="submit" style="border: 0;" class="badge text-bg-primary">I did it</button>
+                                </form>
+                                <form style="display: inline; margin-left: 2px;" action="/remove-todo/<%= todo.id %>" method="post">
+                                  <button type="submit" style="border: 0;" class="badge text-bg-danger">Remove</button>
+                                </form>
+                              <% }%>
+                            </td>
+                          </tr>
+                        <%}%>
+                      </tbody>
+                    <%}%>
+                  </table>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
