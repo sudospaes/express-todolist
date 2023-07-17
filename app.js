@@ -1,25 +1,19 @@
-const express = require("express");
+const { statics } = require("./static/statics");
+const routes = require("./route/routes");
 
-const { staticsSettings } = require("./static/statics");
-const mainRoute = require("./routes/main");
+const app = require("express")();
 
-const app = express();
+app.use(
+  require("body-parser").urlencoded({
+    extended: false,
+  })
+);
 
-// Middlewares
-app.use(express.urlencoded({ extended: false }));
-// End
-
-// Template engine configuration
-app.set("views", "views");
+app.set("views", __dirname + "/views");
+app.engine("esj", require("ejs").renderFile);
 app.set("view engine", "ejs");
-// End
 
-// Set statics configuration
-staticsSettings(app);
-// End
+statics(app);
 
-// Set routes
-app.use(mainRoute);
-//End
-
+app.use(routes);
 app.listen(3000);
