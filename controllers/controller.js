@@ -1,10 +1,12 @@
 const Todo = require("../model/todo");
 
+const uuid = require("uuid");
+
 exports.addTodo = (req, res) => {
   if (!req.body.todo) {
     res.redirect("/");
   } else {
-    const todo = new Todo(Math.floor(Math.random() * 1000), req.body.todo);
+    const todo = new Todo(uuid.v4(), req.body.todo);
     todo.save();
     res.redirect("/");
   }
