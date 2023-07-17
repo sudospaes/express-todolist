@@ -2,15 +2,15 @@ const fs = require("fs");
 const path = require("path");
 
 const { getRootPath } = require("../utils/helper");
-const { todo } = require("node:test");
+const { todos } = require("node:test");
 
-const filePath = path.join(getRootPath(), "..", "data", "todos.json");
+const filePath = path.join(getRootPath(), "..", "storage", "todos.json");
 
 class Todo {
-  constructor(id, text, finished = false) {
+  constructor(id, description, status = false) {
     this.id = id;
-    this.text = text;
-    this.finished = finished;
+    this.description = description;
+    this.status = status;
   }
 
   save() {
@@ -18,15 +18,17 @@ class Todo {
       if (fs.readFileSync(filePath).toString() === "") {
         fs.writeFileSync(filePath, "[]");
       }
-      const todos = JSON.parse(fs.readFileSync(filePath));
+
+      let todos = JSON.parse(fs.readFileSync(filePath));
       todos.push(this);
+
       fs.writeFileSync(filePath, JSON.stringify(todos));
     } else {
       fs.writeFileSync(filePath, `[ ${JSON.stringify(this)} ]`);
     }
   }
 
-  static getTodos() {
+  static getTodoList() {
     if (fs.existsSync(filePath)) {
       if (fs.readFileSync(filePath).toString() === "") {
         return [];
@@ -38,11 +40,11 @@ class Todo {
     }
   }
 
-  static finishing(id) {
+  static done(id) {
     let todos = JSON.parse(fs.readFileSync(filePath));
     for (let todo of todos) {
       if (todo.id == id) {
-        todo.finished = true;
+        todo.status = true;
       }
     }
     fs.writeFileSync(filePath, JSON.stringify(todos));
