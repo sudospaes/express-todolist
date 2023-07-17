@@ -1,5 +1,7 @@
-const path = require("path");
+const { join } = require("path");
 
-exports.getRootPath = () => {
-  return path.join(require.main.filename);
+getRootPath = () => {
+  return join(require.main.filename);
 };
+
+exports.getRootPath = getRootPath;
