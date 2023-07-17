@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-</head>
+<%- include('./includes/header.ejs') %>
 <body>
     <section class="vh-100" style="background-color: #eee;">
         <div class="container py-5 h-100">
@@ -35,8 +27,7 @@
                     <% if (todos.length != 0) {%>
                       <thead>
                         <tr>
-                          <th scope="col">Todo id</th>
-                          <th scope="col">Todo description</th>
+                          <th scope="col">Description</th>
                           <th scope="col">Status</th>
                           <th scope="col">Actions</th>
                         </tr>
@@ -44,7 +35,6 @@
                       <tbody>
                         <% for(let todo of todos) {%>
                           <tr>
-                            <td><%= todo.id %></td>
                             <td><%= todo.text %></td>
                             <td>
                               <% if(todo.finished) {%>
@@ -72,7 +62,6 @@
                       </tbody>
                     <%}%>
                   </table>
-      
                 </div>
               </div>
             </div>
