@@ -1,7 +1,7 @@
 const express = require("express");
 
-const { staticsSettings } = require("./static/statics");
-const mainRoute = require("./routes/main");
+const { setStatics } = require("./static/statics");
+const router = require("./routes/router");
 
 const app = express();
 
@@ -15,11 +15,11 @@ app.set("view engine", "ejs");
 // End
 
 // Set statics configuration
-staticsSettings(app);
+setStatics(app);
 // End
 
 // Set routes
-app.use(mainRoute);
+app.use(router);
 //End
 
 app.listen(3000);
