@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 const { getRootPath } = require("../utils/helper");
-const { todo } = require("node:test");
 
 const filePath = path.join(getRootPath(), "..", "data", "todos.json");
 
@@ -28,14 +27,9 @@ class Todo {
 
   static getTodos() {
     if (fs.existsSync(filePath)) {
-      if (fs.readFileSync(filePath).toString() === "") {
-        return [];
-      } else {
-        return JSON.parse(fs.readFileSync(filePath));
-      }
-    } else {
-      return [];
-    }
+      if (fs.readFileSync(filePath).toString() === "") return [];
+      else return JSON.parse(fs.readFileSync(filePath));
+    } else return [];
   }
 
   static finishing(id) {

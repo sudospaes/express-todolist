@@ -2,17 +2,31 @@
 
 ![](https://github.com/sudospaes/express-todolist/blob/main/img.png)
 
-My first practice project with express.js
 <br>
+Practice todo app with ExpressJS, EJS, Bootstrap and Font-Awesome
 <br>
-I made it with use express, bootstrap, ejs and font-awesome.
+Designed with MVC model.
 <br>
-I used mvc design model in this project.
+I hope it helps you in learning ExpressJS :)
 <br>
-I hope it helps you in learning express.js
+[This good friend](https://github.com/Panahifarah) of ours also came and refactored these codes [here](https://github.com/sudospaes/express-todolist/tree/temp)
 <br>
-<br>
-for install all dependencies
+How to run :
+
+```bash
+  git clone https://github.com/sudospaes/express-todolist.git
+```
+
+```bash
+  cd express-todolist
+```
+
 ```bash
   npm install
 ```
+
+```bash
+  npm start
+```
+
+Go to browser and go to http://localhost:3000
