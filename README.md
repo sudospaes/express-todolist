@@ -9,9 +9,12 @@ Designed with MVC model.
 <br>
 I hope it helps you in learning ExpressJS :)
 <br>
-[This good friend](https://github.com/Panahifarah) of ours also came and refactored these codes [here](https://github.com/sudospaes/express-todolist/tree/temp)
+<br>
+https://github.com/Panahifarah of ours also came and refactored these codes here => https://github.com/sudospaes/express-todolist/tree/temp
+<br>
 <br>
 How to run :
+<br>
 
 ```bash
   git clone https://github.com/sudospaes/express-todolist.git
