@@ -10,18 +10,36 @@
                 <div class="card-body p-4">
       
                   <h4 class="text-center my-3 pb-3">Todo List</h4>
-      
-                  <form action="/add-todo" method="post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
-                    <div class="col-12">
-                      <div class="form-outline">
-                        <input placeholder="Insert your task" type="text" name="todo" class="form-control" />
+
+                  <div class="row row-cols-lg-auto g-3 justify-content-center align-items-center">
+                    <form class="col-12 row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" action="/add-todo" method="post">
+                      <div class="col-12">
+                        <div class="form-outline">
+                          <input placeholder="Insert your task" type="text" name="todo" class="form-control" />
+                        </div>
                       </div>
-                    </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-sm">Add to list</button>
+                      </div>
+                    </form>
+
+                    <% if (todos.length != 0) {%>
+                      <form action="/finishing-all" method="post" class="col-12 row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                        <div>
+                          <button type="submit" class="btn btn-outline-success btn-sm">Finish all</button>
+                        </div>
+                      </form>
+  
+                      <form action="/remove-all" method="post" class="col-12 row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                        <div>
+                          <button type="submit" class="btn btn-outline-danger btn-sm">Remove all</button>
+                        </div>
+                      </form>
+                    <%}%>
+                  </div>
       
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Add to list</button>
-                    </div>
-                  </form>
+                  
+
       
                   <table class="table mb-4 table-hover text-center">
                     <% if (todos.length != 0) {%>
