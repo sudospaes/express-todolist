@@ -1,6 +1,7 @@
 const express = require("express");
 
 const { setStatics } = require("./static/statics");
+const sequelize = require("./utils/database");
 const router = require("./routes/router");
 
 const app = express();
@@ -22,4 +23,11 @@ setStatics(app);
 app.use(router);
 //End
 
-app.listen(3000);
+// Sequelize sync. after that, running server
+sequelize
+  .sync()
+  .then(() => {
+    app.listen(3000, () => console.log("Server is running..."));
+  })
+  .catch((err) => console.log(err));
+// End

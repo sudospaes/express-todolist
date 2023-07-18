@@ -1,23 +1,34 @@
 const Todo = require("../model/todo");
 
-const uuid = require("uuid");
-
-exports.addTodo = (req, res) => {
+const addTodo = (req, res) => {
   if (!req.body.todo) {
     res.redirect("/");
   } else {
-    const todo = new Todo(uuid.v4(), req.body.todo);
-    todo.save();
-    res.redirect("/");
+    Todo.create({ text: req.body.todo })
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch((err) => console.log(err));
   }
 };
 
-exports.removeTodo = (req, res) => {
-  Todo.remove(req.params.id);
-  res.redirect("/");
+const removeTodo = (req, res) => {
+  Todo.destroy({ where: { id: req.params.id } }).then(() => {
+    res.redirect("/");
+  });
 };
 
-exports.finishingTodo = (req, res) => {
-  Todo.finishing(req.params.id);
-  res.redirect("/");
+const finishingTodo = (req, res) => {
+  Todo.findByPk(req.params.id)
+    .then((todo) => {
+      todo.finished = true;
+      return todo.save();
+    })
+    .then(() => res.redirect("/"));
+};
+
+module.exports = {
+  addTodo,
+  removeTodo,
+  finishingTodo,
 };
