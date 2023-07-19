@@ -2,7 +2,7 @@ const Todo = require("../model/todo");
 
 const getTodos = async (req, res) => {
   try {
-    const todos = await Todo.findAll();
+    const todos = await Todo.find();
     res.render("index", { title: "Main Page", todos });
   } catch (err) {
     console.log(err);
@@ -24,7 +24,7 @@ const addTodo = async (req, res) => {
 
 const removeTodo = async (req, res) => {
   try {
-    await Todo.destroy({ where: { id: req.params.id } });
+    await Todo.findByIdAndRemove(req.params.id);
     res.redirect("/");
   } catch (err) {
     console.log(err);
@@ -33,7 +33,7 @@ const removeTodo = async (req, res) => {
 
 const removeAllTodos = async (req, res) => {
   try {
-    await Todo.truncate();
+    await Todo.deleteMany();
     res.redirect("/");
   } catch (err) {
     console.log(err);
@@ -42,7 +42,7 @@ const removeAllTodos = async (req, res) => {
 
 const finishingTodo = async (req, res) => {
   try {
-    const todo = await Todo.findByPk(req.params.id);
+    const todo = await Todo.findById(req.params.id);
     todo.finished = true;
     todo.save();
     res.redirect("/");
@@ -53,7 +53,7 @@ const finishingTodo = async (req, res) => {
 
 const finishAllTodo = async (req, res) => {
   try {
-    await Todo.update({ finished: true }, { where: { finished: false } });
+    await Todo.updateMany({ finished: false }, { $set: { finished: true } });
     res.redirect("/");
   } catch (err) {
     console.log(err);

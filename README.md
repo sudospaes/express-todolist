@@ -2,10 +2,15 @@
 
 ![](https://github.com/sudospaes/express-todolist/blob/main/img.png)
 
-<br>
-Practice todo app with ExpressJS, MySQL, Sequelize, EJS, Bootstrap and Font-Awesome.
-<br>
+
+Practice todo app with ExpressJS, MySQL/MangoDB, Sequelize/Mongoose, EJS, Bootstrap and Font-Awesome.
+
 Designed with MVC model.
-<br>
+
 I hope it helps you in learning ExpressJS :)
-<br>
+
+MySQL based : [HERE](https://github.com/sudospaes/express-todolist/tree/todo-list-based-on-mysql)
+
+JSON based : [HERE](https://github.com/sudospaes/express-todolist/tree/todo-list-based-on-json)
+
+Another JSON based by [Panahifarah](https://github.com/Panahifarah) : [HERE](https://github.com/sudospaes/express-todolist/tree/todo-list-based-on-json)
