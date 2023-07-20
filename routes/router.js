@@ -1,6 +1,5 @@
 const { Router } = require("express");
 
-const Todo = require("../model/todo");
 const controller = require("../controllers/controller");
 
 const router = Router();
@@ -15,7 +14,7 @@ router.post("/remove-all", controller.removeAllTodos);
 
 router.post("/finishing-todo/:id", controller.finishingTodo);
 
-router.post("/finishing-all/", controller.finishAllTodo);
+router.post("/finishing-all/", controller.finishAllTodos);
 
 router.use((req, res) => {
   res.render("404", { title: "404 - Not Found" });

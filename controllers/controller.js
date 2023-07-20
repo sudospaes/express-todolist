@@ -51,7 +51,7 @@ const finishingTodo = async (req, res) => {
   }
 };
 
-const finishAllTodo = async (req, res) => {
+const finishAllTodos = async (req, res) => {
   try {
     await Todo.updateMany({ finished: false }, { $set: { finished: true } });
     res.redirect("/");
@@ -66,5 +66,5 @@ module.exports = {
   removeTodo,
   removeAllTodos,
   finishingTodo,
-  finishAllTodo,
+  finishAllTodos,
 };
