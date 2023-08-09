@@ -17,7 +17,7 @@ router.post("/finishing-todo/:id", controller.finishingTodo);
 router.post("/finishing-all/", controller.finishAllTodos);
 
 router.use((req, res) => {
-  res.render("404", { title: "404 - Not Found" });
+  res.status(404).json({ message: "Not Found" });
 });
 
 module.exports = router;
