@@ -1,6 +1,6 @@
 # express-todolist
 
-![](https://github.com/sudospaes/express-todolist/tree/todo-list-based-on-mongodb/img.png)
+![](https://github.com/sudospaes/express-todolist/blob/todo-list-based-on-mongodb/img.png)
 
 
 Practice todo app with ExpressJS, MySQL/MangoDB, Sequelize/Mongoose, EJS, Bootstrap and Font-Awesome.
